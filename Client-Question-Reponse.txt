@@ -1,0 +1,4 @@
+Quéstions du mandaté et réponses du client:
+
+-07.11.2022: Doit-on utiliser MsSql ?
+	-07.11.2022: Non, vous pouvez utiliser MySql.
