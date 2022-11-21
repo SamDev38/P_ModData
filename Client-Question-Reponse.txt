@@ -1,0 +1,10 @@
+Quéstions du mandaté et réponses du client:
+
+-07.11.2022: Doit-on utiliser MsSql ?
+	-07.11.2022: Non, vous pouvez utiliser MySql.
+-07.11.2022: Qu'est-ce qu'un collaborateur ?
+	-07.11.2022: Un collaborateur est un employé, donc, un enseignant est un collaborateur.
+-07.11.2022: Qu'est-ce que l'identifiant de l'élève ?
+	-07.11.2022: C'est le p-anonyme.
+-07.11.2022: Doit-on utiliser des UUID?
+	-07.11.2022: Non, vous pouvez utiliser des ID uniques auto-incrémentés.
