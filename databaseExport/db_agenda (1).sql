@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 12 Décembre 2022 à 09:21
+-- Généré le :  Lun 12 Décembre 2022 à 10:08
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -56,6 +56,17 @@ CREATE TABLE `t_classpart` (
   `fkClass` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `t_classpart`
+--
+
+INSERT INTO `t_classpart` (`idClassPart`, `name`, `fkClass`) VALUES
+(1, 'MIN / MID 1', 1),
+(2, 'MIN / MID 2', 2),
+(3, 'MIN / MID 3', 3),
+(4, 'MAM / MAD 1', 4),
+(5, 'MAM / MAD 2', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -76,7 +87,12 @@ INSERT INTO `t_collaborator` (`idPerson`, `idSchool`) VALUES
 (2, 1),
 (3, 1),
 (4, 1),
-(5, 1);
+(5, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1);
 
 -- --------------------------------------------------------
 
@@ -88,6 +104,17 @@ CREATE TABLE `t_collaborator_job` (
   `fkPerson` bigint(20) NOT NULL,
   `fkJob` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `t_collaborator_job`
+--
+
+INSERT INTO `t_collaborator_job` (`fkPerson`, `fkJob`) VALUES
+(11, 1),
+(12, 2),
+(13, 3),
+(14, 4),
+(15, 5);
 
 -- --------------------------------------------------------
 
@@ -146,6 +173,17 @@ CREATE TABLE `t_eventtype` (
   `fkScope` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `t_eventtype`
+--
+
+INSERT INTO `t_eventtype` (`idEventType`, `name`, `isFacultative`, `fkScope`) VALUES
+(1, 'Sortie', '1', 3),
+(2, 'Sportif', '1', 4),
+(3, 'Demande de congé', '0', 2),
+(4, 'Arrivée tardive', '0', 2),
+(5, 'Absent', '', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -167,6 +205,17 @@ CREATE TABLE `t_job` (
   `idJob` bigint(20) NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `t_job`
+--
+
+INSERT INTO `t_job` (`idJob`, `name`) VALUES
+(1, 'Concierge'),
+(2, 'Secrétaire'),
+(3, 'Aumônier'),
+(4, 'Infirmière'),
+(5, 'Surveillant');
 
 -- --------------------------------------------------------
 
@@ -203,7 +252,13 @@ INSERT INTO `t_person` (`idPerson`, `birthDate`, `firstname`, `lastname`, `stree
 (6, '2006-01-31', 'Alice', 'Carney', 'Ridiculus St.', '9574', 'Provence-Alpes-Côte d\'Azur', '13652', '+41 40 806 25 81', 'a.tortor.nunc@google.ca', 'm', 'psdhg23x', '1'),
 (7, '2009-06-25', 'Harper', 'Richardson', 'Arcu. Rd.', '135', 'Auvergne', '64225', '+41 77 276 20 47', 'magnis.dis@google.edu', 'm', 'pdfd3', '1'),
 (8, '2009-03-22', 'Jada', 'Wilder', 'Odio, Rd.', '6066', 'Midi-Pyrénées', '48064', '040 424 74 77', 'orci.ut@icloud.couk', 'f', 'pweh3', '1'),
-(9, '2007-12-28', 'Zenia', 'Meyer', 'Pellentesque St.', '411', 'Poitou-Charentes', '01146', '038 823 51 77', 'curabitur.egestas.nunc@outlook.ca', 'm', 'psdjg23g', '1');
+(9, '2007-12-28', 'Zenia', 'Meyer', 'Pellentesque St.', '411', 'Poitou-Charentes', '01146', '038 823 51 77', 'curabitur.egestas.nunc@outlook.ca', 'm', 'psdjg23g', '1'),
+(10, '2022-12-04', 'Jean', 'Michmich', 'Baker Street', '202B', 'Londre', '1023', '+41 14 696 96 31', 'Cherlock.Holmes@gmail.com', 'm', 'p32dars3', '1'),
+(11, '2008-03-05', 'Mathis', 'Bret', 'Dui. Rd.', '5645', 'Bercher', '31411', '+41 14 236 96 31', 'eleifend@icloud.ca', 'm', 'pfd4dfs3', '1'),
+(12, '2004-11-16', 'Alex', 'Grink', 'Feugiat St.', '323', 'Lausanne', '43435', '076 745 12 57', 'penatibus.et.magnis@aol.com', 'm', 'p345fjh', '0'),
+(13, '2009-03-03', 'Julia', 'Combait', 'Dis Rd.', '957', 'Echallens', '25708', '011 245 28 48', 'mauris.sagittis.placerat@yahoo.couk', 'f', 'psd45fd', '1'),
+(14, '2007-02-14', 'Sigmal', 'Orthag', 'Accumsan Street', '965', 'Yverdon', '59347', '+41 32 134 63 29', 'a.feugiat@hotmail.couk', 'm', 'phtm34v', '1'),
+(15, '2007-01-19', 'Mia', 'Kuipe', 'Ipsum. Av.', '5467', 'Montreux', '68512', '+41 73 238 62 90', 'eu.enim.etiam@yahoo.com', 'f', 'pkl34j5', '0');
 
 -- --------------------------------------------------------
 
@@ -225,7 +280,7 @@ INSERT INTO `t_rank` (`idRank`, `name`) VALUES
 (2, 'Doyen'),
 (3, 'Professeur'),
 (4, 'Stagiaire'),
-(5, 'Secrétaire');
+(5, 'MC');
 
 -- --------------------------------------------------------
 
@@ -262,6 +317,16 @@ CREATE TABLE `t_scope` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `t_scope`
+--
+
+INSERT INTO `t_scope` (`idScope`, `name`) VALUES
+(1, 'Classe'),
+(2, 'Personne'),
+(3, 'Ecole'),
+(4, 'Section');
+
 -- --------------------------------------------------------
 
 --
@@ -297,6 +362,14 @@ CREATE TABLE `t_specification` (
   `fkEventType` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `t_specification`
+--
+
+INSERT INTO `t_specification` (`idSpecification`, `myKey`, `myValue`, `fkEventType`) VALUES
+(1, 'Les sorties ', 'Les sorties ne doivent pas durer plus d\'une journée. Il n\'y à que 2 sorties possible par années.', 1),
+(2, 'Les évènement sportifs', 'Les évènement sportifs ont lieu chaque fin de Semestre. Il y aura donc des sports d\'hiver et d\'été. ', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -309,6 +382,17 @@ CREATE TABLE `t_student` (
   `fkSchool` bigint(20) NOT NULL,
   `fkStudentGroup` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `t_student`
+--
+
+INSERT INTO `t_student` (`idPerson`, `fkClassPart`, `fkSchool`, `fkStudentGroup`) VALUES
+(6, 1, 1, 1),
+(7, 2, 1, 2),
+(8, 3, 1, 3),
+(9, 4, 1, 4),
+(10, 5, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -488,7 +572,7 @@ ALTER TABLE `t_class`
 -- AUTO_INCREMENT pour la table `t_classpart`
 --
 ALTER TABLE `t_classpart`
-  MODIFY `idClassPart` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idClassPart` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `t_event`
 --
@@ -498,17 +582,17 @@ ALTER TABLE `t_event`
 -- AUTO_INCREMENT pour la table `t_eventtype`
 --
 ALTER TABLE `t_eventtype`
-  MODIFY `idEventType` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEventType` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `t_job`
 --
 ALTER TABLE `t_job`
-  MODIFY `idJob` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idJob` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `t_person`
 --
 ALTER TABLE `t_person`
-  MODIFY `idPerson` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idPerson` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT pour la table `t_rank`
 --
@@ -523,7 +607,7 @@ ALTER TABLE `t_school`
 -- AUTO_INCREMENT pour la table `t_scope`
 --
 ALTER TABLE `t_scope`
-  MODIFY `idScope` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idScope` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `t_section`
 --
@@ -533,7 +617,7 @@ ALTER TABLE `t_section`
 -- AUTO_INCREMENT pour la table `t_specification`
 --
 ALTER TABLE `t_specification`
-  MODIFY `idSpecification` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSpecification` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `t_studentgroup`
 --
