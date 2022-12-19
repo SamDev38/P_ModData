@@ -1,3 +1,4 @@
+USE db_agenda;
 --
 -- Contenu de la table `t_class`
 --

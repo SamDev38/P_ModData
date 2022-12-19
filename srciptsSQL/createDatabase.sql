@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS db_agenda;
+CREATE DATABASE db_agenda;
+USE db_agenda;
+
 --
 -- Structure de la table `t_class`
 --
