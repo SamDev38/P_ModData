@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 12 Décembre 2022 à 10:08
+-- Généré le :  Lun 19 Décembre 2022 à 08:10
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -160,6 +160,15 @@ CREATE TABLE `t_event` (
   `fkSection` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `t_event`
+--
+
+INSERT INTO `t_event` (`idEvent`, `name`, `description`, `startDate`, `endDate`, `fkEventType`, `fkClass`, `fkStudentGroup`, `fkStudent`, `fkCollaborator`, `fkSchool`, `fkSection`) VALUES
+(1, 'Sortie au musée d\'histoire', 'Nous allons voir le musée d\'histoire naturel du centre de la Suisse, dans le cadre du cours d\'histoire et de science naturel', '2022-12-02', '2022-12-02', 1, 2, NULL, NULL, NULL, NULL, NULL),
+(2, 'Evenement sportif à la montage', 'Sortie à la montage avec toutes une section, pour faire du ski durant une journée', '2022-12-03', '2022-12-03', 2, NULL, NULL, NULL, NULL, NULL, 3),
+(3, 'Absence maladie', 'Absence maladie due au Covid', '2022-12-01', '2022-12-06', 5, NULL, NULL, NULL, 3, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -182,7 +191,7 @@ INSERT INTO `t_eventtype` (`idEventType`, `name`, `isFacultative`, `fkScope`) VA
 (2, 'Sportif', '1', 4),
 (3, 'Demande de congé', '0', 2),
 (4, 'Arrivée tardive', '0', 2),
-(5, 'Absent', '', 2);
+(5, 'Absent', '0', 2);
 
 -- --------------------------------------------------------
 
@@ -194,6 +203,17 @@ CREATE TABLE `t_event_collaborator` (
   `fkPerson` bigint(20) NOT NULL,
   `fkEvent` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `t_event_collaborator`
+--
+
+INSERT INTO `t_event_collaborator` (`fkPerson`, `fkEvent`) VALUES
+(1, 1),
+(13, 1),
+(2, 2),
+(14, 2),
+(12, 3);
 
 -- --------------------------------------------------------
 
@@ -577,7 +597,7 @@ ALTER TABLE `t_classpart`
 -- AUTO_INCREMENT pour la table `t_event`
 --
 ALTER TABLE `t_event`
-  MODIFY `idEvent` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEvent` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `t_eventtype`
 --
